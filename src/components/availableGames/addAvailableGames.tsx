@@ -19,6 +19,7 @@ export default function InputField(props: Props) {
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 placeholder="Geben Sie Text ein"
+                onKeyDown={(event)=>{if (event.key == "Enter"){handleAddToList() }}}
             />
             <button className={"hover:bg-green-900"}
                     onClick={handleAddToList}>Zur Liste hinzufügen</button>

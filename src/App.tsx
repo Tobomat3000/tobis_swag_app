@@ -6,11 +6,12 @@ import AvailableGamesList from "./components/availableGames/availableGamesList.t
 import InputField from "./components/availableGames/addAvailableGames.tsx";
 import ResultList from "./components/resultList/resultList.tsx";
 import InputFieldResult from "./components/resultList/addResult.tsx";
+import SpinWheelWrapper from "./components/SpinWheelBox/SpinWheelWrapper.tsx";
 
 
 function App() {
     const [list, setList] = useState<string[]>([]);
-    const [selectedItem, setSelectedItem] = useState(null);
+    const [selectedItem, setSelectedItem] = useState<string[]>(["test"]);
     const [gamesList, setGamesList] = useState<string[]>([]);
     const [resultList, setResultList] = useState([])
 
@@ -37,6 +38,9 @@ function App() {
         setList(prevList => prevList.filter((_, i) => i !== randomIndex));
     };
 
+
+
+
   return (
       <div className={"grid grid-cols-2 h-screen border-2 w-screen justify-center"}>
           <div className="border-2">
@@ -49,10 +53,9 @@ function App() {
           </div>
 
           <div className="flex flex-col h-full border-2">
-              <div className={"flex-1 border-pink-500 border-2"}>
-                  <button onClick={selectRandomItem}>Wähle zufälliges Element</button>
-                  {selectedItem && (<GameToPlay text={selectedItem}/>)}
-                  <ListComponent items={list} removeItem={removeItem}/>
+              <div className={"flex-row border-pink-500 border-2 items-center justify-center m-auto"}>
+                    <SpinWheelWrapper gamesList={gamesList}/>
+
               </div>
               <div className={"flex-1 border-pink-500 border-2"}>
                   <InputFieldResult addRow={setResultList}/>
